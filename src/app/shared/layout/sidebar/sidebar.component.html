@@ -1,0 +1,152 @@
+<!-- <mat-nav-list fxShow.md fxHide.lt-md class="isShow_medium" >
+    <div>
+        <div class="content" *ngIf="open">
+            <div class="card">
+                <div class="firstinfo">
+                    <img src="assets/image/user (1).png">
+                    <div class="profileinfo">
+                        <h1 style="font-family: 'Roboto', sans-serif !important; letter-spacing: 0.5vw;">
+                            {{user | uppercase}}
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="!open">
+            <a mat mat-list-item routerLinkActive="list-item-active">
+                <mat-icon mat-list-icon *ngIf="!open">account_circle</mat-icon>
+            </a>
+            <mat-divider></mat-divider>
+        </div>
+
+
+    </div>
+
+    <div *ngFor="let menu of mainmenu; let i = index">
+        <mat-list-item  routerLinkActive="list-item-active" *ngIf="menu.route" routerLink="{{menu.route}}">
+            <mat-icon mat-list-icon *ngIf="!open">{{menu.icon}}</mat-icon>
+            <mat-icon mat-list-icon class="icon-display" *ngIf="open">{{menu.icon}}</mat-icon>
+            <p mat-line style="width: 100px;" *ngIf="open">{{menu.label}}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-expansion-panel routerLinkActive="list-item-active" *ngIf="!menu.route"
+            [hideToggle]="!open" [disabled]="!open">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon mat-list-icon *ngIf="!open">{{menu.icon}}</mat-icon>
+                    <mat-icon mat-list-icon class="icon-display" *ngIf="open">{{menu.icon}}</mat-icon>
+                    <p mat-line style="width: 100px; font-size: 16px; padding-left: 16px;padding-top: 24px;"
+                        *ngIf="open">{{menu.label}}</p>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngIf="open">
+                <a mat mat-list-item routerLinkActive="list-item-active" *ngFor="let item of menu.child"
+                    routerLink="{{item.route}}">
+                    <mat-icon mat-list-icon class="icon-display">{{item.icon}}</mat-icon>
+                    <p style="padding-top: 11px; width: 133px;">{{item.label}}</p>
+                </a>
+            </div>
+        </mat-expansion-panel>
+    </div>
+</mat-nav-list>
+
+<mat-nav-list fxShow.sm fxShow.xs fxHide.gt-sm class="isShow_small">
+    <div class="content">
+        <div class="card">
+            <div class="firstinfo">
+                <img src="assets/image/user (1).png">
+                <div class="profileinfo">
+                    <h1 style="font-family: 'Roboto', sans-serif !important; letter-spacing: 0.5vw;">
+                        {{user | uppercase}}
+                    </h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div *ngFor="let menu of mainmenu; let i = index">
+        <a mat mat-list-item routerLinkActive="list-item-active" *ngIf="menu.route" (click)="toggleSidebar()">
+
+            <mat-icon mat-list-icon class="icon-display">{{menu.icon}}</mat-icon>
+            <p mat-line style="width: 100px;" routerLink="{{menu.route}}">{{menu.label}}</p>
+        </a>
+
+        <mat-divider></mat-divider>
+        <mat-expansion-panel mat mat-list-item routerLinkActive="list-item-active" *ngIf="!menu.route">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+
+                    <mat-icon mat-list-icon class="icon-display">{{menu.icon}}</mat-icon>
+                    <p mat-line style="width: 100px; font-size: 16px; padding-left: 16px;padding-top: 12px;">
+                        {{menu.label}}</p>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <a mat mat-list-item routerLinkActive="list-item-active" *ngFor="let item of menu.child" (click)="toggleSidebar()">
+                <mat-icon mat-list-icon class="icon-display">{{item.icon}}</mat-icon>
+                <p style="padding-top: 11px; width: 132px;" routerLink="{{item.route}}">{{item.label}}</p>
+            </a>
+        </mat-expansion-panel>
+    </div>
+</mat-nav-list> -->
+
+
+<div class="content">
+   <div class="card">
+    <!-- <img src="../../../../assets/images/logo_ms_food.png" alt="img">  -->
+    <!-- <img src="../../../../assets/images/mt-business-logo-design-vector-15225950-removebg-preview.png" alt="img"> -->
+     <div class="firstinfo">
+      <img src="https://unsplash.com/s/photos/coding-technology" alt="img"> 
+     <!-- <div class="profileinfo">
+        <h1>
+          {{emp_name | uppercase}}
+        </h1>
+      </div>
+      <app-bubbles></app-bubbles>
+    </div>-->
+  </div>
+</div>
+<!--  -->
+<!-- <mat-list>
+  <div *ngFor="let menu of mainmenu;let i=index;">
+    <mat-list-item routerLink="{{menu.route}}" routerLinkActive="active"  *ngIf="menu.route" (click)="toggleSidebar()">
+      <mat-icon>{{menu.icon}}</mat-icon> {{menu.label}}
+    </mat-list-item>
+    <mat-expansion-panel *ngIf="!menu.route" routerLinkActive="active">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon color="primary">{{menu.icon}}</mat-icon> {{menu.label}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list-item routerLink="{{item.route}}" *ngFor="let item of menu.child" routerLinkActive="active" (click)="toggleSidebar()">
+        <mat-icon>{{item.icon}}</mat-icon> {{item.label}}
+      </mat-list-item>
+    </mat-expansion-panel>
+  </div>
+</mat-list> -->
+
+<div *ngFor="let menu of mainmenu;let i=index;">
+  <mat-list *ngIf="menu.route">
+    <mat-list-item routerLink="{{menu.route}}" routerLinkActive="active" (click)="toggleSidebar()">
+      <mat-icon>{{menu.icon}}</mat-icon> {{menu.label}}
+    </mat-list-item>
+  </mat-list>
+  <mat-list *ngIf="!menu.route">
+    <p class="sidebar-title">{{menu.label}}</p>
+    <mat-list-item routerLink="{{item.route}}" *ngFor="let item of menu.child" routerLinkActive="active" (click)="toggleSidebar()">
+      <mat-icon>{{item.icon}}</mat-icon> {{item.label}}
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<!-- change password in sidebar -->
+<!-- <p class="sidebar-title">User</p>
+<mat-list>
+  <mat-list-item (click)="openChangePasswordForm()">
+    <mat-icon>key</mat-icon> Change Password
+  </mat-list-item>
+</mat-list> -->
+

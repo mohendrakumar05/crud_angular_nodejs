@@ -1,0 +1,35 @@
+{
+    "0":[
+      {
+        "label":"Dashboard",
+        "route": "/dashboard",
+        "icon": "dashboard",
+        "child": []
+      },
+      {
+        "label":"Quotation List",
+        "route": "/orders/orderList",
+        "icon": "storefront",
+        "child": []
+      },
+      {
+        "label":"Machinary Details",
+        "route": "/machinary",
+        "icon": "storefront",
+        "child": []
+      },
+      {
+        "label":"Specification Details",
+        "route": "/specification",
+        "icon": "storefront",
+        "child": []
+      },
+      {
+        "label":"New Quotation",
+        "route": "/new",
+        "icon": "add",
+        "child": []
+      }
+    ]
+    }
+  

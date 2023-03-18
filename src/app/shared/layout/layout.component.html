@@ -1,0 +1,104 @@
+<!-- <app-header (isShowSidebar)="sidenav.toggle($event)" [isMenuOpened]="isShowSidebar"></app-header>
+<router-outlet></router-outlet> -->
+<!-- <mat-sidenav-container class="layout">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [(opened)]="isShowSidebar"
+    class="layout-sidebar"
+    [mode]="mobileQuery.matches ? 'over' : 'side'"
+    [fixedInViewport]="mobileQuery.matches"
+    (keydown.escape)="sidenav.close()"
+  >
+    <app-sidebar (sidenav)="sidenav.close()"></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content class="layout-content" (scroll)="onScroll($event)">
+    <mat-progress-bar color="warn" mode="determinate" [value]="progressValue" class="scrollbar" *ngIf="showScrollProgressBar"></mat-progress-bar>
+    <div class="container-fluid mb-4">
+      <router-outlet></router-outlet>
+    </div>
+    <button mat-fab color="warn" aria-label="Scroll To Top" [ngClass]="{'show-scroll': showScroll}" (click)="scrollToTop()" class="scroll-to-top">
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+<!-- <app-header (isShowSidebar)="open($event)" [isMenuOpened]="isShowSidebar"></app-header>
+<mat-drawer-container autosize>
+  <mat-drawer #sidenav mode="side" [mode]="mobileQuery.matches ? 'over':'side'"
+    [opened]="mobileQuery.matches ? 'false':'true'" (mouseover)="over()" (mouseleave)="out()">
+    <app-sidebar [open]="isShowSidebar" (sidenav)="sidenav.close()"></app-sidebar>
+  </mat-drawer>
+  <mat-drawer-content (scroll)="onScroll($event)">
+    <mat-progress-bar color="warn" mode="determinate" [value]="progressValue" class="progressBar"
+      *ngIf="showScrollProgressBar"></mat-progress-bar>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+    <button mat-fab color="warn" aria-label="Scroll To Top" [ngClass]="{'show-scroll': showScroll}"
+       class="scroll-to-top" (click)="scrollToTop()">
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
+  </mat-drawer-content>
+</mat-drawer-container> -->
+
+
+
+<!-- (click)="scrollToTop()" -->
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="main-container">
+
+  <mat-toolbar style="background: linear-gradient(-90deg, #424238, #262525e3);
+
+  box-shadow: 0px 0px 11px #000000ad;"
+      class="topbar telative">
+
+      <button mat-icon-button (click)="snav.toggle()" value="sidebarclosed">
+          <mat-icon style="color:#ffffff;">menu</mat-icon>
+      </button>
+      <span style=" flex: 1 1 auto;color:#ffffff;;font-weight: bold;">Lok Ayog</span>
+      <app-header></app-header>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="layout">
+      <mat-sidenav #snav id="snav" style="background-color: rgb(255 255 255);
+     "  class="layout-sidebar"
+          [mode]="mobileQuery.matches ? 'side' : 'over'"  [opened]="mobileQuery.matches"
+          [disableClose]="mobileQuery.matches">
+
+          <app-sidebar (snav)="snav.close()"></app-sidebar>
+
+      </mat-sidenav>
+
+      <mat-sidenav-content class="layout-content">
+        <ngx-scrolltop
+        [backgroundColor]="'#212121'"
+        [symbolColor]="'#fafafa'"
+        [size]="40"
+        [mode]="'classic'"
+        position="right"
+        theme="gray">
+      </ngx-scrolltop>
+
+          <div class="container-fluid">
+            <mat-card-title class="text-center" *ngIf="Auth.currentUser?.role==4">Welcome :
+                {{Auth.currentUser?.full_name}}
+            </mat-card-title>
+
+              <router-outlet style="  max-width: 100%;
+              float: right;
+              display: flow-root;">
+              </router-outlet>
+
+
+          </div>
+          <button mat-fab color="warn" aria-label="Scroll To Top" [ngClass]="{'show-scroll': showScroll}" (click)="scrollToTop()" class="scroll-to-top">
+            <mat-icon>arrow_upward</mat-icon>
+        </button>
+
+      </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+</div> -->

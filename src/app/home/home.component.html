@@ -1,0 +1,229 @@
+<mat-toolbar color="primary">
+    <div class="d-flex justify-content-between align-items-center" style="width: 100%;">
+        <div>
+            <h5 style="font-family: 'Roboto' !important; margin-top: 15px;">CRUD Example</h5>
+        </div>
+        <!-- <div *ngIf="!isAddNewFormVisible">
+            <button mat-raised-button color="accent" class="pull-right" aria-label="Add New Button"
+                (click)="showHideAddNewForm()">
+                Add New
+            </button>
+        </div> -->
+    </div>
+</mat-toolbar>
+
+<div class="container-fluid mt-3">
+
+    <div class="row" *ngIf="isAddNewFormVisible">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{{isEditMode ? 'Edit User' : 'New User'}}
+                        <button mat-mini-fab color="accent" class="pull-right" aria-label="Add New"
+                            (click)="showHideAddNewForm()">
+                            <!-- <mat-icon>menu</mat-icon> -->
+                            X
+                        </button>
+                    </h5>
+
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="addUserForm">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <mat-form-field class="full-width" appearance="outline" >
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput formControlName="first_name" type="text" maxlength="500" />
+                                    <mat-error *ngIf="isValidInput('first_name')">
+                                        <mat-error *ngIf="addUserForm.controls['first_name'].errors!.required">
+                                            First Name is<strong>&nbsp; Required!</strong>
+                                        </mat-error>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput formControlName="last_name" type="text" maxlength="500" />
+                                    <mat-error *ngIf="isValidInput('last_name')">
+                                        <mat-error *ngIf="addUserForm.controls['last_name'].errors!.required">
+                                            Last Name is<strong>&nbsp;Required!</strong>
+                                        </mat-error>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="form-group col-md-4 mb-2">
+                                <div class="full-width" appearance="outline">
+                                    <mat-label>Gender </mat-label>
+                                    <mat-radio-group formControlName="gender">
+                                        <mat-radio-button value="Male">Male</mat-radio-button>
+                                        <mat-radio-button value="Female">Female</mat-radio-button>
+                                        <mat-radio-button value="Other">Other</mat-radio-button>
+                                    </mat-radio-group>
+                                    <mat-error *ngIf="isValidInput('gender')">
+                                        <mat-error *ngIf="addUserForm.controls['gender'].errors!.required">
+                                            Gender is<strong>&nbsp;Required!</strong>
+                                        </mat-error>
+                                    </mat-error>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Date of Birth</mat-label>
+                                    <input matInput [matDatepicker]="picker" formControlName="date_of_birth">
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <mat-error *ngIf="isValidInput('date_of_birth')">
+                                        <mat-error *ngIf="addUserForm.controls['date_of_birth'].errors!.required">
+                                            Date of Birth is<strong>&nbsp;Required!</strong>
+                                        </mat-error>
+                                    </mat-error>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput formControlName="email" type="text" maxlength="500" />
+                                    <mat-error *ngIf="isValidInput('email')">
+                                        <mat-error *ngIf="addUserForm.controls['email'].errors!.required">
+                                            Email is<strong>&nbsp;Required!</strong>
+                                        </mat-error>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="form-group col-md-4">
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Contact</mat-label>
+                                    <input matInput formControlName="contact" type="number" />
+                                    <mat-error *ngIf="isValidInput('contact')">
+                                        <mat-error *ngIf="addUserForm.controls['contact'].errors!.required">
+                                            Contact is<strong>&nbsp;Required!</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="addUserForm.controls['contact'].errors!.pattern">
+                                            Contact is<strong>&nbsp;Invalid!</strong>
+                                        </mat-error>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <button mat-raised-button color="primary" type="submit" class="btn btn-primary"
+                                        (click)="saveUserFormData()" [disabled]="addUserForm.invalid" *ngIf="!isEditMode">
+                                        <i class="material-icons">save</i>
+                                        Save
+                                    </button>&nbsp;&nbsp;
+                                    <button
+                                        mat-raised-button
+                                        color="primary"
+                                        type="submit"
+                                        class="btn btn-success"
+                                        (click)="updateUserFormData()"
+                                        [disabled]="addUserForm.invalid"
+                                        *ngIf="isEditMode"
+                                      >
+                                        <i class="material-icons">save</i>
+                                        Update
+                                      </button>&nbsp;&nbsp;
+                                    <button mat-raised-button *ngIf="!isEditMode" color="warn" class="btn btn-accent" (click)="reset()">
+                                        <i class="material-icons">refresh</i>Reset
+                                    </button>&nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3" >
+        <div class="col-sm 12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="page-header" role="heading">
+                        <h4>User Details</h4>
+                    </div>
+                    <div  *ngIf="!isAddNewFormVisible">
+                        <button mat-raised-button color="accent"  (click)="showHideAddNewForm()">Add New</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label class="required">Search</mat-label>
+                                <input matInput autocomplete="off" (keyup)="applyFilter($event)" #input>
+                            </mat-form-field>
+                        </div>
+                        <!-- <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <h5 class="shadow-none p-2 bg-light rounded w-full">Total User : {{totalUser}}</h5>
+                        </div> -->
+                        <div class="table-responsive dt-responsive">
+                            <div class="mat-elevation-z8" id="print-section">
+                                <table mat-table #table [dataSource]="userList" matSort id="report" class="table table-bordered table-striped table-hover">
+                                    <ng-container *ngFor="let column of initColumns"
+                                        matColumnDef="{{column.controlName}}">
+                                        <th mat-header-cell *matHeaderCellDef [mat-sort-header]="column.controlName !== 'SNo' ? column.controlName : ''" [disabled]="column.controlName === 'SNo' ? true : column.controlName === 'Action' ? true : column.controlName === 'gender' ? true : column.controlName === 'date_of_birth' ?  true : false " style="border: 1px solid rgb(168, 167, 167) ;">{{column.displayName}}</th>
+                                        <td mat-cell *matCellDef="let row; let i = index;" class="text-center" style="border: 1px solid rgb(168, 167, 167) ;border-spacing: 0;">
+                                            <span *ngIf="column.controlName == 'SNo'">{{ i + 1 }}</span>
+                                            <span *ngIf="column.controlName == 'u_id'">
+                                                {{row[column.controlName]}}
+                                            </span>
+                                            <span *ngIf="column.controlName == 'first_name'">{{row[column.controlName]}}</span>
+                                            <span *ngIf="column.controlName == 'last_name'">
+                                            {{row[column.controlName]}}
+                                            </span>
+                                            <span *ngIf="column.controlName == 'gender'">
+                                                {{row[column.controlName]}}
+                                            </span>
+                                            <span *ngIf="column.controlName == 'date_of_birth'">{{row[column.controlName] |
+                                                date:'MMM d, y'}}</span>
+                                            <span *ngIf="column.controlName == 'email'">
+                                                {{row[column.controlName]}}
+                                                </span>
+                                                <span *ngIf="column.controlName == 'contact'">
+                                                    {{row[column.controlName]}}
+                                                </span>
+                                            <span *ngIf="column.controlName == 'Action'">
+                                                <button mat-mini-fab color="primary" (click)="editUser(row)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>&nbsp;&nbsp;
+                                                <button mat-mini-fab color="warn"
+                                                    (click)="deleteUser(row['u_id'])">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>&nbsp;&nbsp;
+                                            </span>
+                                      
+        
+                                        </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="columnList1" class="table-row table-header">
+                                    </tr>
+                                    <tr mat-row *matRowDef="let row; columns: columnList1;" class="table-row"></tr>
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="14">No User found.</td>
+                                    </tr>
+                                    <!-- <tr mat-footer-row *matFooterRowDef="columnList"></tr> -->
+                                </table>
+                                <mat-paginator #paginatorRef
+                                    [pageSizeOptions]="[10, 25, 100, 200, 300, 500, 1000, 1500]" [pageSize]="10"
+                                    aria-label="Select page" showFirstLastButtons></mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
