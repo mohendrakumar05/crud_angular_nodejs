@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var {common} = require('../services/commonservice')
-
+var {common} = require('../models/common')
 
 router.post('/save', function (req, res) {
   common[req.body.function_name](req.body, function (err, result) {
